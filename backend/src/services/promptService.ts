@@ -89,8 +89,8 @@ const imageToVideoTemplates = {
 
 export function analyzeIntent(input: string): { type: PromptType; confidence: number } {
   const lowerInput = input.toLowerCase();
-  const textToImageKeywords = ['image', 'picture', 'photo', 'draw', 'paint', 'art', 'illustration', 'generate', 'create'];
-  const imageToVideoKeywords = ['video', 'animate', 'animation', 'motion', 'move', 'dynamic', 'film', 'clip'];
+  const textToImageKeywords = ['image', 'picture', 'photo', 'draw', 'paint', 'art', 'illustration', 'generate', 'create', '图', '图片', '画', '绘图', '照片', '艺术', '生成', '创建'];
+  const imageToVideoKeywords = ['video', 'animate', 'animation', 'motion', 'move', 'dynamic', 'film', 'clip', '视频', '动画', '影片', '动态', '电影', '片段'];
 
   let ttiScore = 0;
   let itvScore = 0;
@@ -113,9 +113,10 @@ export function analyzeIntent(input: string): { type: PromptType; confidence: nu
 }
 
 export function checkInputClarity(input: string): { clear: boolean; suggestion?: string } {
-  const wordCount = input.split(' ').filter(w => w.length > 0).length;
-  
-  if (wordCount < 3) {
+  // 对中文更友好的检测
+  const wordCount = input.length;
+  // 只要超过3个字符就可以
+  if (wordCount < 2) {
     return {
       clear: false,
       suggestion: '请提供更多细节，例如：主题、风格、场景描述等'

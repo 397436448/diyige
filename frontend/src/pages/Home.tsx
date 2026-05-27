@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { api } from '../services/api';
 
+// 预设模板
+const quickPresets = [
+  { label: '🌅 风景摄影', prompt: '壮丽的自然风光，山川湖泊，日落，专业风光摄影，高画质' },
+  { label: '👤 人像艺术', prompt: '精美人物肖像，柔和灯光，专业人像摄影，高质量细节' },
+  { label: '🏘️ 赛博朋克城市', prompt: '未来都市夜景，霓虹灯，赛博朋克风格，科幻，高细节' },
+  { label: '🎨 动漫风格', prompt: '精美动漫插画，日系风格，色彩鲜艳，高画质' },
+];
+
 export const HomePage: React.FC = () => {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -78,6 +86,28 @@ export const HomePage: React.FC = () => {
         </p>
       </div>
 
+      {/* 快速预设 */}
+      <div className="card" style={{ maxWidth: '800px', margin: '0 auto 1.5rem' }}>
+        <div className="card-body">
+          <h3 style={{ marginBottom: '0.75rem' }}>💡 快速开始</h3>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem', fontSize: '0.875rem' }}>
+            选择一个预设模板，或输入你自己的创意：
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {quickPresets.map(p => (
+              <button
+                key={p.prompt}
+                type="button"
+                className="btn btn-outline btn-sm"
+                onClick={() => setInput(p.prompt)}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="card" style={{ maxWidth: '800px', margin: '0 auto' }}>
         <div className="card-body">
           <form onSubmit={handleGenerate}>
@@ -87,8 +117,11 @@ export const HomePage: React.FC = () => {
                 className="input textarea"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="例如：海边日落，海鸥飞过..."
+                placeholder="例如：海边日落，金色沙滩，海浪拍打，海鸥飞翔，晚霞，宁静的气氛"
               />
+              <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
+                💡 提示：你可以包含主题、风格、颜色、光线、构图等元素的描述
+              </p>
             </div>
             <button
               type="submit"
@@ -99,7 +132,7 @@ export const HomePage: React.FC = () => {
               {loading ? (
                 <><div className="spinner" style={{ width: '1rem', height: '1rem', marginRight: '0.5rem' }} /> 生成中...</>
               ) : (
-                '生成提示词'
+                '✨ 生成提示词'
               )}
             </button>
           </form>
@@ -109,7 +142,7 @@ export const HomePage: React.FC = () => {
       {needsClarification && (
         <div className="card" style={{ maxWidth: '800px', margin: '1.5rem auto 0' }}>
           <div className="card-body">
-            <div className="alert" style={{ backgroundColor: '#fef3c7', color: '#92400e', border: '1px solid #fcd34d' }}>
+            <div className="alert alert-error">
               {clarification}
             </div>
           </div>
@@ -136,7 +169,7 @@ export const HomePage: React.FC = () => {
                   {refining ? (
                     <><div className="spinner" style={{ width: '0.75rem', height: '0.75rem', marginRight: '0.25rem' }} /> 润色中...</>
                   ) : (
-                    '✨ 润色'
+                    '✨ 智能润色'
                   )}
                 </button>
                 <button
@@ -144,7 +177,7 @@ export const HomePage: React.FC = () => {
                   className="btn btn-outline btn-sm"
                   onClick={() => handleCopy(result.prompt)}
                 >
-                  {copied ? '✓ 已复制' : '📋 复制'}
+                  {copied ? '✅ 已复制' : '📋 复制'}
                 </button>
               </div>
             </div>
@@ -166,7 +199,7 @@ export const HomePage: React.FC = () => {
           {refinedPrompt && (
             <>
               <div className="card-header">
-                ✨ 润色后的版本
+                ✨ 智能润色后的版本
               </div>
               <div className="card-body">
                 <pre style={{
@@ -186,13 +219,42 @@ export const HomePage: React.FC = () => {
                   style={{ marginTop: '1rem' }}
                   onClick={() => handleCopy(refinedPrompt)}
                 >
-                  📋 复制润色后的
+                  📋 复制润色后的版本
                 </button>
               </div>
             </>
           )}
         </div>
       )}
+
+      {/* 功能介绍卡片 */}
+      <div className="card" style={{ maxWidth: '800px', margin: '2rem auto 0' }}>
+        <div className="card-header">
+          <h3>🎯 功能介绍</h3>
+        </div>
+        <div className="card-body">
+          <div style={{ display: 'grid', gap: '1rem' }}>
+            <div>
+              <h4 style={{ marginBottom: '0.25rem' }}>🖼️ 文生图提示词</h4>
+              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.875rem' }}>
+                自动分析你的描述，生成专业的文生图提示词，包含风格、光线、构图等要素
+              </p>
+            </div>
+            <div>
+              <h4 style={{ marginBottom: '0.25rem' }}>🎬 图生视频提示词</h4>
+              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.875rem' }}>
+                为视频生成场景提供动态提示词，包含摄像机运动、转换风格等要素
+              </p>
+            </div>
+            <div>
+              <h4 style={{ marginBottom: '0.25rem' }}>✨ 智能润色</h4>
+              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.875rem' }}>
+                一键增强你的提示词，添加更多细节和专业词汇
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

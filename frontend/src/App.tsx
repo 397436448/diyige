@@ -6,6 +6,7 @@ import { HistoryPage } from './pages/History';
 import { SettingsPage } from './pages/Settings';
 import { LoginPage } from './pages/Login';
 import { RegisterPage } from './pages/Register';
+import { AdminDashboard } from './pages/AdminDashboard';
 import './styles/main.css';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -84,6 +85,11 @@ function AppContent() {
         <Route path="/settings" element={
           <ProtectedRoute>
             <SettingsPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin" element={
+          <ProtectedRoute>
+            <AdminDashboard />
           </ProtectedRoute>
         } />
       </Routes>

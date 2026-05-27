@@ -43,6 +43,11 @@ export const Navbar: React.FC = () => {
             <Link to="/settings" className="nav-link">
               设置
             </Link>
+            {user.role === 'admin' && (
+              <Link to="/admin" className="nav-link">
+                🛠️ 管理后台
+              </Link>
+            )}
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
                 {user.username}
