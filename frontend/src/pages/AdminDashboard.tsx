@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { api } from '../services/api';
 
 interface User {
   id: number;
@@ -46,7 +45,7 @@ export const AdminDashboard: React.FC = () => {
     setLoading(false);
   }, []);
 
-  if (!user || user.role !== 'admin') {
+  if (!user || user.role !== 'ADMIN') {
     return (
       <div className="container" style={{ padding: '2rem 1rem', textAlign: 'center' }}>
         <div className="card">

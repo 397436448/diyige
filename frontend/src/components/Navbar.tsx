@@ -43,7 +43,7 @@ export const Navbar: React.FC = () => {
             <Link to="/settings" className="nav-link">
               设置
             </Link>
-            {user.role === 'admin' && (
+            {user.role === 'ADMIN' && (
               <Link to="/admin" className="nav-link">
                 🛠️ 管理后台
               </Link>

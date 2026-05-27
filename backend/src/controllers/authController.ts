@@ -48,7 +48,7 @@ export async function register(req: Request, res: Response) {
       userId: user.id,
       username: user.username,
       email: user.email,
-      role: user.role,
+      role: user.role as 'USER' | 'ADMIN',
     });
 
     res.status(201).json({
@@ -57,7 +57,7 @@ export async function register(req: Request, res: Response) {
         id: user.id,
         email: user.email,
         username: user.username,
-        role: user.role,
+        role: user.role as 'USER' | 'ADMIN',
       },
     });
   } catch (error) {
@@ -94,7 +94,7 @@ export async function login(req: Request, res: Response) {
       userId: user.id,
       username: user.username,
       email: user.email,
-      role: user.role,
+      role: user.role as 'USER' | 'ADMIN',
     });
 
     res.json({
@@ -103,7 +103,7 @@ export async function login(req: Request, res: Response) {
         id: user.id,
         email: user.email,
         username: user.username,
-        role: user.role,
+        role: user.role as 'USER' | 'ADMIN',
       },
     });
   } catch (error) {
