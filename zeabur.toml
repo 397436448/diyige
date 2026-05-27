@@ -1,0 +1,23 @@
+[project]
+name = "ai-prompt-generator"
+stage = "production"
+
+[services]
+[services.backend]
+name = "api"
+package = "backend"
+build_command = "npm install && npm run prisma:generate && npm run build"
+start_command = "npm start"
+[services.backend.env]
+NODE_ENV = "production"
+PORT = "3001"
+DATABASE_URL = "file:./prod.db"
+JWT_SECRET = { source = "secret", name = "JWT_SECRET" }
+
+[services.frontend]
+name = "frontend"
+package = "frontend"
+build_command = "npm install && npm run build"
+dist_dir = "dist"
+[services.frontend.env]
+VITE_API_URL = { source = "service", name = "api", attr = "endpoint" }
