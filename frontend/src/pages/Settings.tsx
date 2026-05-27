@@ -98,7 +98,7 @@ export const SettingsPage: React.FC = () => {
     <div className="container" style={{ padding: '2rem 1rem' }}>
       <div style={{ marginBottom: '2rem' }}>
         <h1 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-          Settings
+          设置
         </h1>
         <p style={{ color: 'var(--text-secondary)' }}>
           管理你的账户和 API 设置
@@ -179,7 +179,7 @@ export const SettingsPage: React.FC = () => {
           <div className="card-body">
             <form onSubmit={handleSave}>
               <div className="form-group">
-                <label className="form-label">Provider</label>
+                <label className="form-label">服务商</label>
                 <select
                   className="input"
                   value={provider}
@@ -198,18 +198,18 @@ export const SettingsPage: React.FC = () => {
                   className="input"
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="Enter your API key"
+                  placeholder="请输入你的 API Key"
                 />
               </div>
 
               <div className="form-group">
-                <label className="form-label">Endpoint (optional)</label>
+                <label className="form-label">接口地址（可选）</label>
                 <input
                   type="text"
                   className="input"
                   value={endpoint}
                   onChange={(e) => setEndpoint(e.target.value)}
-                  placeholder="Custom endpoint"
+                  placeholder="自定义接口地址"
                 />
               </div>
 
@@ -219,9 +219,9 @@ export const SettingsPage: React.FC = () => {
                 disabled={saving || !apiKey.trim()}
               >
                 {saving ? (
-                  <><div className="spinner" style={{ width: '1rem', height: '1rem', marginRight: '0.5rem' }} /> Saving...</>
+                  <><div className="spinner" style={{ width: '1rem', height: '1rem', marginRight: '0.5rem' }} /> 保存中...</>
                 ) : (
-                  'Save Configuration'
+                  '保存配置'
                 )}
               </button>
             </form>
@@ -270,7 +270,7 @@ export const SettingsPage: React.FC = () => {
                       className="btn btn-danger btn-sm"
                       onClick={() => handleDelete(config.id)}
                     >
-                      Delete
+                      删除
                     </button>
                   </div>
                 ))}
