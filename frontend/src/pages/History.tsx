@@ -26,7 +26,7 @@ export const HistoryPage: React.FC = () => {
       }
       setHasMore(page < data.pagination.totalPages);
     } catch (error) {
-      console.error('Failed to load history:', error);
+      console.error('加载历史失败:', error);
     } finally {
       setLoading(false);
     }
@@ -41,7 +41,7 @@ export const HistoryPage: React.FC = () => {
       await api.history.delete(id);
       setHistory(prev => prev.filter(item => item.id !== id));
     } catch (error) {
-      console.error('Failed to delete:', error);
+      console.error('删除失败:', error);
     }
   };
 
@@ -54,7 +54,7 @@ export const HistoryPage: React.FC = () => {
         )
       );
     } catch (error) {
-      console.error('Failed to toggle favorite:', error);
+      console.error('收藏失败:', error);
     }
   };
 
@@ -62,7 +62,7 @@ export const HistoryPage: React.FC = () => {
     try {
       await navigator.clipboard.writeText(text);
     } catch (error) {
-      console.error('Copy failed:', error);
+      console.error('复制失败:', error);
     }
   };
 
@@ -70,10 +70,10 @@ export const HistoryPage: React.FC = () => {
     <div className="container" style={{ padding: '2rem 1rem' }}>
       <div style={{ marginBottom: '2rem' }}>
         <h1 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-          History
+          历史记录
         </h1>
         <p style={{ color: 'var(--text-secondary)' }}>
-          Your previously generated prompts
+          你之前生成的提示词
         </p>
       </div>
 
@@ -86,7 +86,7 @@ export const HistoryPage: React.FC = () => {
       {!loading && history.length === 0 && (
         <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
           <p style={{ color: 'var(--text-secondary)' }}>
-            No history yet. Start generating prompts!
+            暂无历史记录，开始生成提示词吧！
           </p>
         </div>
       )}
@@ -98,7 +98,7 @@ export const HistoryPage: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <span className={`badge ${item.type === 'TEXT_TO_IMAGE' ? 'badge-primary' : 'badge-success'}`}>
-                    {item.type === 'TEXT_TO_IMAGE' ? 'Text to Image' : 'Image to Video'}
+                    {item.type === 'TEXT_TO_IMAGE' ? '文生图' : '图生视频'}
                   </span>
                   <span style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>
                     {new Date(item.createdAt).toLocaleDateString()}
@@ -137,7 +137,7 @@ export const HistoryPage: React.FC = () => {
                   color: 'var(--text-secondary)', 
                   margin: '0 0 0.5rem 0' 
                 }}>
-                  Input:
+                  输入：
                 </p>
                 <p style={{ margin: 0 }}>{item.rawInput}</p>
               </div>
@@ -147,7 +147,7 @@ export const HistoryPage: React.FC = () => {
                   color: 'var(--text-secondary)', 
                   margin: '0 0 0.5rem 0' 
                 }}>
-                  Generated:
+                  生成的：
                 </p>
                 <pre style={{
                   margin: 0,
@@ -174,7 +174,7 @@ export const HistoryPage: React.FC = () => {
             onClick={() => setPage(p => p + 1)}
             disabled={loading}
           >
-            {loading ? <><div className="spinner" style={{ width: '1rem', height: '1rem', marginRight: '0.5rem' }} /> Loading...</> : 'Load More'}
+            {loading ? <><div className="spinner" style={{ width: '1rem', height: '1rem', marginRight: '0.5rem' }} /> 加载中...</> : '加载更多'}
           </button>
         </div>
       )}

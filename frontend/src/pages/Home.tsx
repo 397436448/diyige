@@ -37,7 +37,7 @@ export const HomePage: React.FC = () => {
         });
       }
     } catch (error) {
-      console.error('Generation failed:', error);
+      console.error('生成失败:', error);
     } finally {
       setLoading(false);
     }
@@ -51,7 +51,7 @@ export const HomePage: React.FC = () => {
       const data = await api.prompt.refine(result.prompt);
       setRefinedPrompt(data.refined);
     } catch (error) {
-      console.error('Refine failed:', error);
+      console.error('润色失败:', error);
     } finally {
       setRefining(false);
     }
@@ -63,7 +63,7 @@ export const HomePage: React.FC = () => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (error) {
-      console.error('Copy failed:', error);
+      console.error('复制失败:', error);
     }
   };
 
@@ -71,10 +71,10 @@ export const HomePage: React.FC = () => {
     <div className="container" style={{ padding: '2rem 1rem' }}>
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
         <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-          AI Prompt Generator
+          AI 提示词生成器
         </h1>
         <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-          Describe what you want to create, and we'll generate a professional prompt
+          描述你想要创建的内容，我们将为你生成专业的提示词
         </p>
       </div>
 
@@ -82,12 +82,12 @@ export const HomePage: React.FC = () => {
         <div className="card-body">
           <form onSubmit={handleGenerate}>
             <div className="form-group">
-              <label className="form-label">Describe your idea</label>
+              <label className="form-label">描述你的想法</label>
               <textarea
                 className="input textarea"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="e.g., A sunset over the ocean with seagulls flying..."
+                placeholder="例如：海边日落，海鸥飞过..."
               />
             </div>
             <button
@@ -97,9 +97,9 @@ export const HomePage: React.FC = () => {
               disabled={loading || !input.trim()}
             >
               {loading ? (
-                <><div className="spinner" style={{ width: '1rem', height: '1rem', marginRight: '0.5rem' }} /> Generating...</>
+                <><div className="spinner" style={{ width: '1rem', height: '1rem', marginRight: '0.5rem' }} /> 生成中...</>
               ) : (
-                'Generate Prompt'
+                '生成提示词'
               )}
             </button>
           </form>
@@ -121,9 +121,9 @@ export const HomePage: React.FC = () => {
           <div className="card-header">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <span>
-                Generated Prompt{' '}
+                生成的提示词{' '}
                 <span className={`badge ${result.type === 'TEXT_TO_IMAGE' ? 'badge-primary' : 'badge-success'}`}>
-                  {result.type === 'TEXT_TO_IMAGE' ? 'Text to Image' : 'Image to Video'}
+                  {result.type === 'TEXT_TO_IMAGE' ? '文生图' : '图生视频'}
                 </span>
               </span>
               <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -134,9 +134,9 @@ export const HomePage: React.FC = () => {
                   disabled={refining}
                 >
                   {refining ? (
-                    <><div className="spinner" style={{ width: '0.75rem', height: '0.75rem', marginRight: '0.25rem' }} /> Refining...</>
+                    <><div className="spinner" style={{ width: '0.75rem', height: '0.75rem', marginRight: '0.25rem' }} /> 润色中...</>
                   ) : (
-                    '✨ Refine'
+                    '✨ 润色'
                   )}
                 </button>
                 <button
@@ -144,7 +144,7 @@ export const HomePage: React.FC = () => {
                   className="btn btn-outline btn-sm"
                   onClick={() => handleCopy(result.prompt)}
                 >
-                  {copied ? '✓ Copied!' : '📋 Copy'}
+                  {copied ? '✓ 已复制' : '📋 复制'}
                 </button>
               </div>
             </div>
@@ -166,7 +166,7 @@ export const HomePage: React.FC = () => {
           {refinedPrompt && (
             <>
               <div className="card-header">
-                ✨ Refined Version
+                ✨ 润色后的版本
               </div>
               <div className="card-body">
                 <pre style={{
@@ -186,7 +186,7 @@ export const HomePage: React.FC = () => {
                   style={{ marginTop: '1rem' }}
                   onClick={() => handleCopy(refinedPrompt)}
                 >
-                  📋 Copy Refined
+                  📋 复制润色后的
                 </button>
               </div>
             </>

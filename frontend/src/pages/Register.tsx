@@ -20,7 +20,7 @@ export const RegisterPage: React.FC = () => {
       await register(email, username, password);
       navigate('/');
     } catch (err: any) {
-      setError(err.message || 'Registration failed');
+      setError(err.message || '注册失败');
     } finally {
       setLoading(false);
     }
@@ -37,10 +37,10 @@ export const RegisterPage: React.FC = () => {
       <div className="card" style={{ width: '100%', maxWidth: '400px' }}>
         <div className="card-body">
           <h1 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-            Create Account
+            创建账户
           </h1>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
-            Sign up to get started
+            注册以开始使用
           </p>
 
           {error && (
@@ -51,34 +51,37 @@ export const RegisterPage: React.FC = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label className="form-label">Email</label>
+              <label className="form-label">邮箱</label>
               <input
                 type="email"
                 className="input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="请输入邮箱"
                 required
               />
             </div>
 
             <div className="form-group">
-              <label className="form-label">Username</label>
+              <label className="form-label">用户名</label>
               <input
                 type="text"
                 className="input"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                placeholder="请输入用户名"
                 required
               />
             </div>
 
             <div className="form-group">
-              <label className="form-label">Password</label>
+              <label className="form-label">密码</label>
               <input
                 type="password"
                 className="input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="请输入密码（至少6个字符）"
                 required
                 minLength={6}
               />
@@ -90,17 +93,17 @@ export const RegisterPage: React.FC = () => {
               style={{ width: '100%', marginBottom: '1rem' }}
               disabled={loading}
             >
-              {loading ? <div className="spinner" style={{ width: '1rem', height: '1rem' }} /> : 'Create Account'}
+              {loading ? <div className="spinner" style={{ width: '1rem', height: '1rem' }} /> : '注册'}
             </button>
           </form>
 
           <p style={{ textAlign: 'center', fontSize: '0.875rem' }}>
-            Already have an account?{' '}
+            已有账户？{' '}
             <Link
               to="/login"
               style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 500 }}
             >
-              Sign in
+              立即登录
             </Link>
           </p>
         </div>

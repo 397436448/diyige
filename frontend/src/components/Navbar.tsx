@@ -29,19 +29,19 @@ export const Navbar: React.FC = () => {
           color: 'var(--text-primary)',
           textDecoration: 'none'
         }}>
-          ✨ PromptGen
+          ✨ 提示词生成器
         </Link>
 
         {user && (
           <div className="nav" style={{ gap: '1.5rem' }}>
             <Link to="/" className="nav-link">
-              Generator
+              生成器
             </Link>
             <Link to="/history" className="nav-link">
-              History
+              历史记录
             </Link>
             <Link to="/settings" className="nav-link">
-              Settings
+              设置
             </Link>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
@@ -52,7 +52,7 @@ export const Navbar: React.FC = () => {
                 className="btn btn-secondary btn-sm"
                 onClick={handleLogout}
               >
-                Logout
+                退出登录
               </button>
             </div>
           </div>
