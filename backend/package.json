@@ -2,11 +2,12 @@
   "name": "prompt-generator-backend",
   "version": "1.0.0",
   "description": "AI Prompt Generator Backend API",
-  "main": "dist/index.js",
+  "main": "dist/fc-handler.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
+    "start:fc": "node dist/fc-handler.js",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
     "prisma:studio": "prisma studio",
