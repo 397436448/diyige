@@ -12,7 +12,7 @@ model User {
   email     String   @unique
   username  String   @unique
   passwordHash String
-  role      Role     @default(USER)
+  role      String   @default("USER")
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -39,7 +39,7 @@ model PromptHistory {
   userId        Int
   rawInput      String
   result        String
-  type          PromptType
+  type          String
   refinedResult String?
   isFavorite    Boolean  @default(false)
   createdAt     DateTime @default(now())
@@ -62,25 +62,9 @@ model AdSlot {
 
 model Content {
   id        Int      @id @default(autoincrement())
-  type      ContentType
+  type      String
   key       String   @unique
   value     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-enum Role {
-  USER
-  ADMIN
-}
-
-enum PromptType {
-  TEXT_TO_IMAGE
-  IMAGE_TO_VIDEO
-}
-
-enum ContentType {
-  ANNOUNCEMENT
-  HELP
-  TEMPLATE
 }
