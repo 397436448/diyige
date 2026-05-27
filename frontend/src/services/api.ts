@@ -41,6 +41,11 @@ export const api = {
         body: JSON.stringify({ email, password }),
       }),
     getCurrentUser: () => fetchApi('/auth/me'),
+    changePassword: (currentPassword: string, newPassword: string) =>
+      fetchApi('/auth/change-password', {
+        method: 'POST',
+        body: JSON.stringify({ currentPassword, newPassword }),
+      }),
   },
 
   prompt: {

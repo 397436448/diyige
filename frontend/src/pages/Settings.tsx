@@ -16,6 +16,13 @@ export const SettingsPage: React.FC = () => {
   const [apiKey, setApiKey] = useState('');
   const [endpoint, setEndpoint] = useState('');
   const [saving, setSaving] = useState(false);
+  
+  // 密码修改状态
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [changingPassword, setChangingPassword] = useState(false);
+  const [passwordMessage, setPasswordMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   const loadConfigs = async () => {
     try {
@@ -58,6 +65,35 @@ export const SettingsPage: React.FC = () => {
     }
   };
 
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (newPassword !== confirmPassword) {
+      setPasswordMessage({ type: 'error', text: '两次输入的密码不一致' });
+      return;
+    }
+
+    if (newPassword.length < 6) {
+      setPasswordMessage({ type: 'error', text: '新密码至少需要 6 个字符' });
+      return;
+    }
+
+    setChangingPassword(true);
+    setPasswordMessage(null);
+
+    try {
+      await api.auth.changePassword(currentPassword, newPassword);
+      setPasswordMessage({ type: 'success', text: '密码修改成功！' });
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+    } catch (error: any) {
+      setPasswordMessage({ type: 'error', text: error.message || '密码修改失败' });
+    } finally {
+      setChangingPassword(false);
+    }
+  };
+
   return (
     <div className="container" style={{ padding: '2rem 1rem' }}>
       <div style={{ marginBottom: '2rem' }}>
@@ -65,14 +101,80 @@ export const SettingsPage: React.FC = () => {
           Settings
         </h1>
         <p style={{ color: 'var(--text-secondary)' }}>
-          Configure your AI providers
+          管理你的账户和 API 设置
         </p>
       </div>
 
-      <div style={{ display: 'grid', gap: '2rem' }}>
+      <div style={{ display: 'grid', gap: '2rem', maxWidth: '800px' }}>
+        {/* 密码修改区域 */}
         <div className="card">
           <div className="card-header">
-            Add API Configuration
+            修改密码
+          </div>
+          <div className="card-body">
+            <form onSubmit={handleChangePassword}>
+              {passwordMessage && (
+                <div className={`alert ${passwordMessage.type === 'success' ? 'alert-success' : 'alert-error'}`}>
+                  {passwordMessage.text}
+                </div>
+              )}
+              
+              <div className="form-group">
+                <label className="form-label">当前密码</label>
+                <input
+                  type="password"
+                  className="input"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  placeholder="请输入当前密码"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">新密码</label>
+                <input
+                  type="password"
+                  className="input"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="请输入新密码（至少 6 个字符）"
+                  required
+                  minLength={6}
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">确认新密码</label>
+                <input
+                  type="password"
+                  className="input"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="请再次输入新密码"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={changingPassword}
+              >
+                {changingPassword ? (
+                  <><div className="spinner" style={{ width: '1rem', height: '1rem', marginRight: '0.5rem' }} /> 修改中...</>
+                ) : (
+                  '修改密码'
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* API 配置区域 */}
+        <div className="card">
+          <div className="card-header">
+            添加 API 配置
           </div>
           <div className="card-body">
             <form onSubmit={handleSave}>
@@ -128,7 +230,7 @@ export const SettingsPage: React.FC = () => {
 
         <div className="card">
           <div className="card-header">
-            Saved Configurations
+            已保存的配置
           </div>
           <div className="card-body">
             {loading && (
@@ -138,8 +240,8 @@ export const SettingsPage: React.FC = () => {
             )}
             {!loading && configs.length === 0 && (
               <p style={{ color: 'var(--text-secondary)', textAlign: 'center' }}>
-              No configurations saved yet.
-            </p>
+                暂无配置
+              </p>
             )}
             {!loading && configs.length > 0 && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
