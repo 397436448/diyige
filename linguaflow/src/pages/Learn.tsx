@@ -15,12 +15,12 @@ function Complete({ title, xp, onDone }: { title: string; xp: number; onDone: ()
   return (
     <div className="complete">
       <div className="complete__icon"><Icon.Check size={40} /></div>
-      <h2 className="complete__title">Lesson Complete!</h2>
+      <h2 className="complete__title">课程完成!</h2>
       <p className="complete__subtitle">{title}</p>
-      <div className="complete__xp"><Icon.Sparkles size={20} /> +{xp} XP</div>
+      <div className="complete__xp"><Icon.Sparkles size={20} /> +{xp} 经验值</div>
       <div style={{ marginTop: 32, display: 'flex', gap: 16, justifyContent: 'center' }}>
-        <Button variant="ghost" onClick={() => onDone()}>Back to courses</Button>
-        <Button variant="primary" onClick={onDone}>Continue</Button>
+        <Button variant="ghost" onClick={() => onDone()}>返回课程</Button>
+        <Button variant="primary" onClick={onDone}>继续</Button>
       </div>
     </div>
   );
@@ -49,9 +49,9 @@ function VocabularyModule({ words, onComplete }: {
   return (
     <>
       <div className="learn__topbar">
-        <div className="learn__back" onClick={onComplete}><Icon.ArrowLeft size={18} /> Back</div>
+        <div className="learn__back" onClick={onComplete}><Icon.ArrowLeft size={18} /> 返回</div>
         <DotProgress current={idx} total={words!.length} />
-        <div className="learn__streak"><Icon.Flame size={18} /> Streak</div>
+        <div className="learn__streak"><Icon.Flame size={18} /> 连续</div>
       </div>
       <div className="learn__card" onClick={() => setFlipped(!flipped)} style={{ cursor: 'pointer' }}>
         {!flipped ? (
@@ -59,13 +59,13 @@ function VocabularyModule({ words, onComplete }: {
             <div className="learn__word">{w.word}</div>
             <div className="learn__phonetic">
               {w.phonetic}
-              <button className="learn__audio" onClick={(e) => { e.stopPropagation(); playAudio(); }} aria-label="Play pronunciation">
+              <button className="learn__audio" onClick={(e) => { e.stopPropagation(); playAudio(); }} aria-label="播放发音">
                 <Icon.Play size={22} />
               </button>
             </div>
-            <p className="learn__example">Example: {w.example}</p>
+            <p className="learn__example">例句: {w.example}</p>
             <p className="learn__example-zh">{w.exampleZh}</p>
-            <p style={{ color: 'var(--color-text-muted)', fontSize: 'var(--text-caption)', marginTop: 8 }}>Tap card to reveal meaning</p>
+            <p style={{ color: 'var(--color-text-muted)', fontSize: 'var(--text-caption)', marginTop: 8 }}>点击卡片查看释义</p>
           </>
         ) : (
           <>
@@ -76,8 +76,8 @@ function VocabularyModule({ words, onComplete }: {
         )}
       </div>
       <div className="learn__actions">
-        <Button variant="success" size="lg" onClick={() => answer(false)} icon="Book">Still learning</Button>
-        <Button variant="primary" size="lg" onClick={() => answer(true)} icon="Check">I knew it</Button>
+        <Button variant="success" size="lg" onClick={() => answer(false)} icon="Book">还需巩固</Button>
+        <Button variant="primary" size="lg" onClick={() => answer(true)} icon="Check">我认识</Button>
       </div>
     </>
   );
@@ -114,13 +114,13 @@ function SpellingModule({ words, onComplete }: {
   return (
     <>
       <div className="learn__topbar">
-        <div className="learn__back" onClick={onComplete}><Icon.ArrowLeft size={18} /> Back</div>
+        <div className="learn__back" onClick={onComplete}><Icon.ArrowLeft size={18} /> 返回</div>
         <DotProgress current={idx} total={words!.length} />
-        <div className="learn__streak"><Icon.Flame size={18} /> Streak</div>
+        <div className="learn__streak"><Icon.Flame size={18} /> 连续</div>
       </div>
       <div className="learn__card">
-        <p style={{ color: 'var(--color-text-secondary)', marginBottom: 16 }}>Type the word you hear</p>
-        <button className="learn__audio" onClick={playAudio} aria-label="Play word audio">
+        <p style={{ color: 'var(--color-text-secondary)', marginBottom: 16 }}>请拼写你听到的单词</p>
+        <button className="learn__audio" onClick={playAudio} aria-label="播放单词音频">
           <Icon.Play size={26} />
         </button>
         <p className="learn__meaning" style={{ marginTop: 16 }}>{w.meaning}</p>
@@ -130,17 +130,17 @@ function SpellingModule({ words, onComplete }: {
         <input
           className={`learn__input${status === 'correct' ? ' learn__input--correct' : ''}${status === 'wrong' ? ' learn__input--wrong' : ''}`}
           type="text"
-          placeholder="Type the word..."
+          placeholder="输入单词..."
           value={input}
           onChange={e => setInput(e.target.value)}
           autoFocus
           autoComplete="off"
         />
         <div style={{ marginTop: 16, textAlign: 'center' }}>
-          <Button type="submit" variant="primary" size="md" disabled={!input.trim()}>Submit</Button>
+          <Button type="submit" variant="primary" size="md" disabled={!input.trim()}>提交</Button>
         </div>
-        {status === 'correct' && <p style={{ textAlign: 'center', marginTop: 12, color: 'var(--color-success)', fontWeight: 600, fontSize: 'var(--text-caption)' }}><Icon.Check size={16} /> Correct!</p>}
-        {status === 'wrong' && <p style={{ textAlign: 'center', marginTop: 12, color: '#ef4444', fontWeight: 600, fontSize: 'var(--text-caption)' }}>Try again — answer: {w.word}</p>}
+        {status === 'correct' && <p style={{ textAlign: 'center', marginTop: 12, color: 'var(--color-success)', fontWeight: 600, fontSize: 'var(--text-caption)' }}><Icon.Check size={16} /> 正确!</p>}
+        {status === 'wrong' && <p style={{ textAlign: 'center', marginTop: 12, color: '#ef4444', fontWeight: 600, fontSize: 'var(--text-caption)' }}>再试一次 — 正确答案: {w.word}</p>}
       </form>
     </>
   );
@@ -174,9 +174,9 @@ function GrammarModule({ grammar, onComplete, onAnswered }: {
   return (
     <>
       <div className="learn__topbar">
-        <div className="learn__back" onClick={onComplete}><Icon.ArrowLeft size={18} /> Back</div>
+        <div className="learn__back" onClick={onComplete}><Icon.ArrowLeft size={18} /> 返回</div>
         <DotProgress current={idx} total={grammar!.length} />
-        <div className="learn__streak"><Icon.Flame size={18} /> Streak</div>
+        <div className="learn__streak"><Icon.Flame size={18} /> 连续</div>
       </div>
       <div className="learn__card" style={{ textAlign: 'left', alignItems: 'stretch' }}>
         <div style={{ padding: 'var(--space-8) var(--space-8)', width: '100%' }}>
@@ -201,7 +201,7 @@ function GrammarModule({ grammar, onComplete, onAnswered }: {
           {showExpl && (
             <div className="grammar__explanation">
               <strong style={{ color: selected === q.answer ? 'var(--color-success)' : '#ef4444' }}>
-                {selected === q.answer ? '✓ Correct! ' : '✗ Not quite. '}
+                {selected === q.answer ? '✓ 正确! ' : '✗ 还差一点。 '}
               </strong>
               {q.explanation}
             </div>
@@ -211,7 +211,7 @@ function GrammarModule({ grammar, onComplete, onAnswered }: {
       {showExpl && (
         <div className="learn__actions">
           <Button variant="primary" size="md" onClick={next} icon="ArrowRight">
-            {idx + 1 < grammar!.length ? 'Next Question' : 'Finish'}
+            {idx + 1 < grammar!.length ? '下一题' : '完成'}
           </Button>
         </div>
       )}
@@ -259,20 +259,20 @@ function SpeakingModule({ speaking, onComplete, onCompleted }: {
   return (
     <>
       <div className="learn__topbar">
-        <div className="learn__back" onClick={onComplete}><Icon.ArrowLeft size={18} /> Back</div>
+        <div className="learn__back" onClick={onComplete}><Icon.ArrowLeft size={18} /> 返回</div>
         <DotProgress current={idx} total={speaking!.length} />
-        <div className="learn__streak"><Icon.Flame size={18} /> Streak</div>
+        <div className="learn__streak"><Icon.Flame size={18} /> 连续</div>
       </div>
       <div className="learn__card">
-        <p style={{ color: 'var(--color-text-secondary)' }}>Read this word aloud:</p>
+        <p style={{ color: 'var(--color-text-secondary)' }}>请大声朗读这个单词:</p>
         <div className="learn__word">{w.word}</div>
         <div className="learn__phonetic">{w.phonetic}</div>
-        <button className="learn__audio" onClick={playTarget} aria-label="Play reference">
+        <button className="learn__audio" onClick={playTarget} aria-label="播放示范发音">
           <Icon.Play size={22} />
         </button>
         <p className="learn__example">{w.example}</p>
         {!supported && (
-          <p style={{ color: '#ef4444', fontSize: 'var(--text-caption)', marginTop: 8 }}>Your browser does not support speech recognition. Try Chrome.</p>
+          <p style={{ color: '#ef4444', fontSize: 'var(--text-caption)', marginTop: 8 }}>你的浏览器不支持语音识别,请使用 Chrome 浏览器。</p>
         )}
       </div>
       <div style={{ textAlign: 'center', marginTop: 32 }}>
@@ -280,17 +280,17 @@ function SpeakingModule({ speaking, onComplete, onCompleted }: {
           className={`speaking__mic${listening ? ' speaking__mic--listening' : ''}`}
           onClick={startListen}
           disabled={listening || !supported}
-          aria-label="Start speaking"
+          aria-label="开始说话"
         >
           <Icon.Mic size={36} />
         </button>
-        <p className="speaking__status">{listening ? 'Listening... speak now' : 'Tap the mic and say the word'}</p>
+        <p className="speaking__status">{listening ? '正在聆听...请开始说话' : '点击麦克风并朗读单词'}</p>
         {transcript && (
           <div className="speaking__result">
             <p className="speaking__transcript">"{transcript}"</p>
             {score !== null && (
               <p className="speaking__score" style={{ color: score >= 0.7 ? 'var(--color-success)' : '#ef4444' }}>
-                {score >= 0.7 ? '✓ Great pronunciation!' : 'Try again — aim closer to the target'}
+                {score >= 0.7 ? '✓ 发音很棒!' : '再试一次,尽量接近标准发音'}
               </p>
             )}
           </div>
@@ -298,7 +298,7 @@ function SpeakingModule({ speaking, onComplete, onCompleted }: {
         {transcript && (
           <div className="learn__actions">
             <Button variant="primary" size="md" onClick={next} icon="ArrowRight">
-              {idx + 1 < speaking!.length ? 'Next Word' : 'Finish'}
+              {idx + 1 < speaking!.length ? '下一个单词' : '完成'}
             </Button>
           </div>
         )}
@@ -344,15 +344,15 @@ function ListeningModule({ listening, onComplete, onAnswered }: {
   return (
     <>
       <div className="learn__topbar">
-        <div className="learn__back" onClick={onComplete}><Icon.ArrowLeft size={18} /> Back</div>
+        <div className="learn__back" onClick={onComplete}><Icon.ArrowLeft size={18} /> 返回</div>
         <DotProgress current={idx} total={listening!.length} />
-        <div className="learn__streak"><Icon.Flame size={18} /> Streak</div>
+        <div className="learn__streak"><Icon.Flame size={18} /> 连续</div>
       </div>
       <div className="learn__card" style={{ textAlign: 'left' }}>
         <div style={{ width: '100%' }}>
-          <p style={{ color: 'var(--color-text-secondary)', marginBottom: 16, textAlign: 'center' }}>Listen to the audio and answer:</p>
+          <p style={{ color: 'var(--color-text-secondary)', marginBottom: 16, textAlign: 'center' }}>请听音频并回答问题:</p>
           <div className="listening__player">
-            <button className="listening__play" onClick={playAudio} aria-label="Play audio"><Icon.Play size={28} /></button>
+            <button className="listening__play" onClick={playAudio} aria-label="播放音频"><Icon.Play size={28} /></button>
             <div className="listening__waves">
               {bars.map(i => (
                 <div key={i} className={`listening__bar${played ? ' listening__bar--active' : ''}`} style={{
@@ -389,7 +389,7 @@ function ListeningModule({ listening, onComplete, onAnswered }: {
       {selected !== null && (
         <div className="learn__actions">
           <Button variant="primary" size="md" onClick={next} icon="ArrowRight">
-            {idx + 1 < listening!.length ? 'Next' : 'Finish'}
+            {idx + 1 < listening!.length ? '下一题' : '完成'}
           </Button>
         </div>
       )}
@@ -411,8 +411,8 @@ export function LearnPage() {
       <div className="learn">
         <div className="empty">
           <div className="empty__icon"><Icon.Book size={48} /></div>
-          <p>Lesson not found</p>
-          <Button variant="primary" onClick={() => navigate('/courses')} style={{ marginTop: 16 }}>Back to courses</Button>
+          <p>课程未找到</p>
+          <Button variant="primary" onClick={() => navigate('/courses')} style={{ marginTop: 16 }}>返回课程列表</Button>
         </div>
       </div>
     );

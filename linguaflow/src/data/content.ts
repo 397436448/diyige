@@ -64,7 +64,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'a1-l1',
         title: 'Greetings & Introductions',
-        description: 'Common greetings and self-introduction phrases',
+        description: '常见的问候与自我介绍用语',
         type: 'vocabulary',
         xp: 50,
         words: [
@@ -81,7 +81,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'a1-l2',
         title: 'Daily Conversations',
-        description: 'Everyday phrases for daily life',
+        description: '日常生活中的常用表达',
         type: 'grammar',
         xp: 60,
         grammar: [
@@ -89,38 +89,38 @@ export const COURSES: CourseLevel[] = [
             question: 'Choose the correct article: ___ apple',
             options: ['a', 'an', 'the', '—'],
             answer: 1,
-            explanation: 'Use "an" before words starting with a vowel sound.',
+            explanation: '在以元音音素开头的单词前使用 "an"。',
           },
           {
             question: 'Complete: I ___ a student.',
             options: ['am', 'is', 'are', 'be'],
             answer: 0,
-            explanation: 'First person singular uses "am".',
+            explanation: '第一人称单数使用 "am"。',
           },
           {
             question: 'Choose the correct pronoun: ___ is my sister.',
             options: ['He', 'She', 'It', 'They'],
             answer: 1,
-            explanation: 'For a female person, use "She".',
+            explanation: '指代女性时使用 "She"。',
           },
           {
             question: 'Complete: We ___ happy today.',
             options: ['am', 'is', 'are', 'be'],
             answer: 2,
-            explanation: 'Plural subject "We" takes "are".',
+            explanation: '复数主语 "We" 使用 "are"。',
           },
           {
             question: 'Choose the plural: book → ___',
             options: ['bookes', 'books', 'bookies', 'book'],
             answer: 1,
-            explanation: 'Regular plurals add -s.',
+            explanation: '规则名词复数加 -s。',
           },
         ],
       },
       {
         id: 'a1-l3',
         title: 'Food & Drinks',
-        description: 'Vocabulary for food and beverages',
+        description: '食物与饮品相关词汇',
         type: 'spelling',
         xp: 55,
         words: [
@@ -134,7 +134,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'a1-l4',
         title: 'Numbers & Time',
-        description: 'Practice pronunciation of numbers and time',
+        description: '练习数字与时间的发音',
         type: 'speaking',
         xp: 50,
         speaking: [
@@ -570,19 +570,19 @@ export interface Achievement {
 }
 
 export const ACHIEVEMENTS: Achievement[] = [
-  { id: 'first-lesson', name: 'First Step', description: 'Complete your first lesson', icon: 'sparkles', type: 'lesson', threshold: 1, xpReward: 50 },
-  { id: 'lessons-5', name: 'Dedicated', description: 'Complete 5 lessons', icon: 'book', type: 'lesson', threshold: 5, xpReward: 100 },
-  { id: 'lessons-20', name: 'Scholar', description: 'Complete 20 lessons', icon: 'graduation', type: 'lesson', threshold: 20, xpReward: 300 },
-  { id: 'streak-3', name: 'Getting Started', description: '3-day study streak', icon: 'flame', type: 'streak', threshold: 3, xpReward: 60 },
-  { id: 'streak-7', name: 'Week Warrior', description: '7-day study streak', icon: 'flame', type: 'streak', threshold: 7, xpReward: 150 },
-  { id: 'streak-30', name: 'Unstoppable', description: '30-day study streak', icon: 'flame', type: 'streak', threshold: 30, xpReward: 500 },
-  { id: 'words-50', name: 'Word Collector', description: 'Learn 50 words', icon: 'layers', type: 'words', threshold: 50, xpReward: 100 },
-  { id: 'words-100', name: 'Word Master', description: 'Learn 100 words', icon: 'layers', type: 'words', threshold: 100, xpReward: 200 },
-  { id: 'words-500', name: 'Lexicon Lord', description: 'Learn 500 words', icon: 'crown', type: 'words', threshold: 500, xpReward: 600 },
-  { id: 'grammar-20', name: 'Grammar Guru', description: 'Answer 20 grammar questions', icon: 'puzzle', type: 'grammar', threshold: 20, xpReward: 150 },
-  { id: 'speaking-20', name: 'Pronunciation Pro', description: 'Complete 20 speaking exercises', icon: 'mic', type: 'speaking', threshold: 20, xpReward: 150 },
-  { id: 'level-a2', name: 'Rising Star', description: 'Unlock Elementary level', icon: 'star', type: 'level', threshold: 1, xpReward: 200 },
-  { id: 'level-b1', name: 'Intermediate Ace', description: 'Unlock Intermediate level', icon: 'medal', type: 'level', threshold: 1, xpReward: 300 },
+  { id: 'first-lesson', name: '初次启程', description: '完成你的第一节课', icon: 'sparkles', type: 'lesson', threshold: 1, xpReward: 50 },
+  { id: 'lessons-5', name: '勤奋学者', description: '完成 5 节课程', icon: 'book', type: 'lesson', threshold: 5, xpReward: 100 },
+  { id: 'lessons-20', name: '博学之士', description: '完成 20 节课程', icon: 'graduation', type: 'lesson', threshold: 20, xpReward: 300 },
+  { id: 'streak-3', name: '起步打卡', description: '连续学习 3 天', icon: 'flame', type: 'streak', threshold: 3, xpReward: 60 },
+  { id: 'streak-7', name: '一周坚持', description: '连续学习 7 天', icon: 'flame', type: 'streak', threshold: 7, xpReward: 150 },
+  { id: 'streak-30', name: '势不可挡', description: '连续学习 30 天', icon: 'flame', type: 'streak', threshold: 30, xpReward: 500 },
+  { id: 'words-50', name: '词汇收集者', description: '学习 50 个单词', icon: 'layers', type: 'words', threshold: 50, xpReward: 100 },
+  { id: 'words-100', name: '词汇达人', description: '学习 100 个单词', icon: 'layers', type: 'words', threshold: 100, xpReward: 200 },
+  { id: 'words-500', name: '词汇大师', description: '学习 500 个单词', icon: 'crown', type: 'words', threshold: 500, xpReward: 600 },
+  { id: 'grammar-20', name: '语法专家', description: '答对 20 道语法题', icon: 'puzzle', type: 'grammar', threshold: 20, xpReward: 150 },
+  { id: 'speaking-20', name: '发音高手', description: '完成 20 个口语练习', icon: 'mic', type: 'speaking', threshold: 20, xpReward: 150 },
+  { id: 'level-a2', name: '新星崛起', description: '解锁初级课程', icon: 'star', type: 'level', threshold: 1, xpReward: 200 },
+  { id: 'level-b1', name: '中级达人', description: '解锁中级课程', icon: 'medal', type: 'level', threshold: 1, xpReward: 300 },
 ];
 
 /* ---------- Level thresholds for XP ---------- */

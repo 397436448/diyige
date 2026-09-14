@@ -18,8 +18,8 @@ export function Courses() {
   return (
     <>
       <div className="page-header">
-        <div className="page-header__eyebrow">Graded Curriculum</div>
-        <h1 className="page-header__title">Course Levels</h1>
+        <div className="page-header__eyebrow">分级课程体系</div>
+        <h1 className="page-header__title">课程等级</h1>
         <p className="page-header__subtitle">从入门到精通,五级课程体系循序渐进</p>
       </div>
 
@@ -40,7 +40,7 @@ export function Courses() {
                     <span className="course-card__code" style={{ background: course.color + '20', color: course.color }}>{course.cefr}</span>
                   </div>
                   <div style={{ maxWidth: 400, marginBottom: 16 }}>
-                    <ProgressBar progress={pct} label={`${course.level}`} meta={`${done} / ${course.lessons.length} lessons`} color={course.color} height={10} />
+                    <ProgressBar progress={pct} label={`${course.level}`} meta={`${done} / ${course.lessons.length} 课时`} color={course.color} height={10} />
                   </div>
                   <div className="lesson-list">
                     {course.lessons.map(lesson => {
@@ -55,7 +55,7 @@ export function Courses() {
                             <div className="lesson-row__title">{lesson.title}</div>
                             <div className="lesson-row__desc">{lesson.description}</div>
                           </div>
-                          <div className="lesson-row__xp">+{lesson.xp} XP</div>
+                          <div className="lesson-row__xp">+{lesson.xp} 经验</div>
                         </div>
                       );
                     })}

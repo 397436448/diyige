@@ -6,7 +6,7 @@ import { Card, AchievementBadge, SectionHeader, ProgressBar } from '../component
 import { useApp } from '../context/AppContext';
 import { ACHIEVEMENTS, getLevelFromXp } from '../data/content';
 
-const DAY_ICONS = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+const DAY_LABELS = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 
 export function Achievements() {
   const { progress, user } = useApp();
@@ -32,8 +32,8 @@ export function Achievements() {
   return (
     <>
       <div className="page-header">
-        <div className="page-header__eyebrow">Rewards & Milestones</div>
-        <h1 className="page-header__title">Achievements</h1>
+        <div className="page-header__eyebrow">奖励与里程碑</div>
+        <h1 className="page-header__title">成就</h1>
         <p className="page-header__subtitle">解锁徽章,保持连续打卡,挑战更高等级</p>
       </div>
 
@@ -41,28 +41,28 @@ export function Achievements() {
       <div className="achievements__summary">
         <div className="achievements__stat">
           <div className="achievements__stat-num">{earned} / {total}</div>
-          <div className="achievements__stat-label">Badges Earned</div>
+          <div className="achievements__stat-label">已获得徽章</div>
         </div>
         <div className="achievements__stat">
           <div className="achievements__stat-num">{progress.streak}</div>
-          <div className="achievements__stat-label">Day Streak</div>
+          <div className="achievements__stat-label">连续天数</div>
         </div>
         <div className="achievements__stat">
           <div className="achievements__stat-num">#{rank}</div>
-          <div className="achievements__stat-label">Your Rank</div>
+          <div className="achievements__stat-label">我的排名</div>
         </div>
         <div className="achievements__stat">
           <div className="achievements__stat-num">{progress.xp}</div>
-          <div className="achievements__stat-label">Total XP</div>
+          <div className="achievements__stat-label">总经验值</div>
         </div>
       </div>
 
       <div className="progress__grid">
         {/* Weekly Streak */}
         <Card>
-          <SectionHeader title="Weekly Streak" />
+          <SectionHeader title="本周连续打卡" />
           <div className="streak-week">
-            {DAY_ICONS.map((day, i) => (
+            {DAY_LABELS.map((day, i) => (
               <div key={day}>
                 <div className="streak-week__label">{day}</div>
                 <div className={`streak-week__flame${weekActive[i] ? ' streak-week__flame--active' : ''}`}>
@@ -70,22 +70,22 @@ export function Achievements() {
                 </div>
               </div>
             ))}
-            <div className="streak-week__status">Current Streak: <strong>{progress.streak} Days</strong></div>
+            <div className="streak-week__status">当前连续: <strong>{progress.streak} 天</strong></div>
           </div>
         </Card>
 
         {/* Level Progress */}
         <Card>
-          <SectionHeader title="Level Progress" />
+          <SectionHeader title="等级进度" />
           <div className="level-progress">
             <div className="level-progress__levels">
-              <span className="level-progress__current">Level {level}</span>
-              <span className="level-progress__next">→ Level {level + 1}</span>
+              <span className="level-progress__current">等级 {level}</span>
+              <span className="level-progress__next">→ 等级 {level + 1}</span>
             </div>
             <ProgressBar progress={pct} color="var(--color-accent)" height={14} />
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--text-caption)', color: 'var(--color-text-secondary)' }}>
-              <span className="level-progress__xp">XP: {current} / {needed}</span>
-              <span className="level-progress__pct">{Math.round(pct * 100)}% Complete</span>
+              <span className="level-progress__xp">经验值: {current} / {needed}</span>
+              <span className="level-progress__pct">{Math.round(pct * 100)}% 完成</span>
             </div>
           </div>
         </Card>
@@ -93,7 +93,7 @@ export function Achievements() {
 
       {/* Achievements grid */}
       <Card style={{ marginBottom: 32 }}>
-        <SectionHeader title="All Achievements" />
+        <SectionHeader title="全部成就" />
         <div className="achievements__grid">
           {ACHIEVEMENTS.map(a => {
             const isEarned = progress.unlockedAchievements.includes(a.id);
@@ -113,7 +113,7 @@ export function Achievements() {
 
       {/* Achievement details */}
       <Card>
-        <SectionHeader title="Achievement Details" />
+        <SectionHeader title="成就详情" />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {ACHIEVEMENTS.map(a => {
             const isEarned = progress.unlockedAchievements.includes(a.id);
@@ -141,8 +141,8 @@ export function Achievements() {
                   )}
                 </div>
                 <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                  <div style={{ fontSize: 'var(--text-caption)', fontWeight: 700, color: 'var(--color-accent)' }}>+{a.xpReward} XP</div>
-                  {isEarned && <div style={{ fontSize: 'var(--text-micro)', color: 'var(--color-success)', fontWeight: 600 }}><Icon.Check size={12} /> EARNED</div>}
+                  <div style={{ fontSize: 'var(--text-caption)', fontWeight: 700, color: 'var(--color-accent)' }}>+{a.xpReward} 经验值</div>
+                  {isEarned && <div style={{ fontSize: 'var(--text-micro)', color: 'var(--color-success)', fontWeight: 600 }}><Icon.Check size={12} /> 已获得</div>}
                 </div>
               </div>
             );

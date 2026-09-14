@@ -8,10 +8,10 @@ import { useApp } from '../context/AppContext';
 import { getLevelFromXp } from '../data/content';
 
 const NAV = [
-  { to: '/dashboard', label: 'Dashboard', icon: 'Home' as const },
-  { to: '/courses', label: 'Courses', icon: 'Book' as const },
-  { to: '/progress', label: 'Progress', icon: 'Chart' as const },
-  { to: '/achievements', label: 'Achievements', icon: 'Trophy' as const },
+  { to: '/dashboard', label: '首页', icon: 'Home' as const },
+  { to: '/courses', label: '课程', icon: 'Book' as const },
+  { to: '/progress', label: '进度', icon: 'Chart' as const },
+  { to: '/achievements', label: '成就', icon: 'Trophy' as const },
 ];
 
 function Toasts() {
@@ -69,9 +69,9 @@ export function AppShell({ children }: { children: ReactNode }) {
             <div className="sidebar__avatar">{user.name.slice(0, 1).toUpperCase()}</div>
             <div className="sidebar__user-info">
               <div className="sidebar__user-name">{user.name}</div>
-              <div className="sidebar__user-level">Level {level}</div>
+              <div className="sidebar__user-level">等级 {level}</div>
             </div>
-            <button className="sidebar__logout" onClick={(e) => { e.stopPropagation(); signout(); navigate('/'); }} aria-label="Sign out" title="Sign out">
+            <button className="sidebar__logout" onClick={(e) => { e.stopPropagation(); signout(); navigate('/'); }} aria-label="退出登录" title="退出登录">
               <Icon.LogOut size={18} style={{ color: 'var(--color-text-muted)' }} />
             </button>
           </div>

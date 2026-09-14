@@ -45,10 +45,10 @@ export function AuthPage() {
   };
 
   const quickDemo = () => {
-    // Auto-fill demo credentials
+    // 自动填充演示账号
     setEmail('demo@linguaflow.com');
     setPassword('demo1234');
-    setName('Alex');
+    setName('小明');
     setMode('register');
     setError('');
   };
@@ -60,7 +60,7 @@ export function AuthPage() {
           <div className="auth__brand-icon"><Icon.Graduation size={26} /></div>
           <span className="auth__brand-name">LinguaFlow</span>
         </div>
-        <h1 className="auth__title">{mode === 'login' ? 'Welcome back' : 'Create your account'}</h1>
+        <h1 className="auth__title">{mode === 'login' ? '欢迎回来' : '创建账号'}</h1>
         <p className="auth__subtitle">{mode === 'login' ? '继续你的英语学习之旅' : '开启沉浸式英语学习体验'}</p>
 
         {error && <div className="auth__error">{error}</div>}
@@ -72,7 +72,7 @@ export function AuthPage() {
               <input
                 className="field__input"
                 type="text"
-                placeholder="Your name"
+                placeholder="你的名字"
                 value={name}
                 onChange={e => setName(e.target.value)}
                 autoComplete="name"
@@ -84,7 +84,7 @@ export function AuthPage() {
             <input
               className="field__input"
               type="email"
-              placeholder="you@example.com"
+              placeholder="你的邮箱@example.com"
               value={email}
               onChange={e => setEmail(e.target.value)}
               autoComplete="email"
@@ -102,7 +102,7 @@ export function AuthPage() {
             />
           </div>
           <Button type="submit" variant="primary" size="lg" full>
-            {mode === 'login' ? 'Sign In' : 'Create Account'}
+            {mode === 'login' ? '登 录' : '立 即 注 册'}
           </Button>
         </form>
 

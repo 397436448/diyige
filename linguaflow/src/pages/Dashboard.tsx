@@ -9,11 +9,11 @@ import { useApp } from '../context/AppContext';
 import { COURSES, getLevelFromXp, getAllLessons } from '../data/content';
 
 const QUICK = [
-  { key: 'vocabulary', label: 'Vocabulary', icon: 'Doc', color: '#4a6cf7' },
-  { key: 'spelling', label: 'Spelling', icon: 'Pencil', color: '#22c55e' },
-  { key: 'grammar', label: 'Grammar', icon: 'Brain', color: '#f5a623' },
-  { key: 'speaking', label: 'Speaking', icon: 'Mic', color: '#a855f7' },
-  { key: 'listening', label: 'Listening', icon: 'Headphones', color: '#ef4444' },
+  { key: 'vocabulary', label: '词汇', icon: 'Doc', color: '#4a6cf7' },
+  { key: 'spelling', label: '拼写', icon: 'Pencil', color: '#22c55e' },
+  { key: 'grammar', label: '语法', icon: 'Brain', color: '#f5a623' },
+  { key: 'speaking', label: '口语', icon: 'Mic', color: '#a855f7' },
+  { key: 'listening', label: '听力', icon: 'Headphones', color: '#ef4444' },
 ] as const;
 
 export function Dashboard() {
@@ -49,32 +49,32 @@ export function Dashboard() {
   };
 
   const pathNodes = [
-    { label: lastDone?.title || 'Start', state: lastDone ? 'done' : 'current' as const, icon: 'Check' as const },
+    { label: lastDone?.title || '开始', state: lastDone ? 'done' : 'current' as const, icon: 'Check' as const },
     ...nextLessons.slice(0, 2).map((l, i) => ({
       label: l.title,
       state: i === 0 ? 'current' : 'todo' as const,
       icon: l.type === 'vocabulary' ? 'Doc' : l.type === 'grammar' ? 'Brain' : l.type === 'spelling' ? 'Pencil' : l.type === 'speaking' ? 'Mic' : 'Headphones' as const,
     })),
   ];
-  if (pathNodes.length < 3) pathNodes.push({ label: 'More', state: 'todo' as const, icon: 'Sparkles' as const });
+  if (pathNodes.length < 3) pathNodes.push({ label: '更多', state: 'todo' as const, icon: 'Sparkles' as const });
 
   return (
     <>
       <div className="dash__header">
         <div>
-          <h1 className="dash__greeting">Hello, {user.name}</h1>
-          <p style={{ color: 'var(--color-text-secondary)', marginTop: 4 }}>Level {level} · {progress.xp} XP · {progress.learnedWords.length} words learned</p>
+          <h1 className="dash__greeting">你好,{user.name}</h1>
+          <p style={{ color: 'var(--color-text-secondary)', marginTop: 4 }}>等级 {level} · {progress.xp} 经验值 · 已学 {progress.learnedWords.length} 个单词</p>
         </div>
         <div className="dash__streak">
           <Icon.Flame size={20} />
-          {progress.streak} DAY STREAK
+          连续 {progress.streak} 天
         </div>
       </div>
 
       <div className="dash__grid">
         {/* Personalized Learning Path */}
         <Card>
-          <div className="dash__card-title">Your Personalized Learning Path</div>
+          <div className="dash__card-title">你的个性化学习路径</div>
           <div className="path">
             <svg className="path__svg" preserveAspectRatio="none" viewBox="0 0 100 100">
               <path d="M 15 50 Q 35 20, 50 50 T 85 50" fill="none" stroke="var(--color-border)" strokeWidth="1.5" strokeDasharray="3 4" strokeLinecap="round" />
@@ -95,7 +95,7 @@ export function Dashboard() {
 
         {/* Course Levels */}
         <Card>
-          <div className="dash__card-title">Your Course Levels</div>
+          <div className="dash__card-title">你的课程等级</div>
           <div className="levels">
             {courseProgress.map(c => (
               <div key={c.level} className="level-card" style={{ cursor: 'pointer' }} onClick={() => navigate('/courses')}>
@@ -111,23 +111,23 @@ export function Dashboard() {
 
         {/* Daily Goal */}
         <Card>
-          <div className="dash__card-title">Daily Goal</div>
+          <div className="dash__card-title">每日目标</div>
           <ProgressBar
             progress={goalPct}
-            label="COMPLETE"
-            meta={`${todayMinutes.toFixed(0)} / ${progress.dailyGoalMinutes} min · Today's Target`}
+            label="完成度"
+            meta={`${todayMinutes.toFixed(0)} / ${progress.dailyGoalMinutes} 分钟 · 今日目标`}
             color="var(--color-primary)"
             height={20}
           />
           <div style={{ marginTop: 16, display: 'flex', alignItems: 'center', gap: 12, color: 'var(--color-text-secondary)', fontSize: 'var(--text-caption)' }}>
             <Icon.Target size={18} style={{ color: 'var(--color-accent)' }} />
-            {goalPct >= 1 ? 'Goal achieved! Keep the streak going.' : `${Math.ceil(progress.dailyGoalMinutes - todayMinutes)} min to reach today's goal`}
+            {goalPct >= 1 ? '目标已达成!继续保持连胜!' : `还差 ${Math.ceil(progress.dailyGoalMinutes - todayMinutes)} 分钟达成今日目标`}
           </div>
         </Card>
 
         {/* Quick Practice */}
         <Card>
-          <div className="dash__card-title">Quick Practice</div>
+          <div className="dash__card-title">快速练习</div>
           <div className="quick">
             {QUICK.map(q => {
               const IconComp = (Icon as any)[q.icon] || Icon.Sparkles;
@@ -149,7 +149,7 @@ export function Dashboard() {
             <Icon.Route size={26} />
           </div>
           <div style={{ flex: 1 }}>
-            <div style={{ fontWeight: 700, fontSize: 'var(--text-section)', color: 'var(--color-text)' }}>Continue learning</div>
+            <div style={{ fontWeight: 700, fontSize: 'var(--text-section)', color: 'var(--color-text)' }}>继续学习</div>
             <div style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-caption)' }}>{nextLessons[0].title} · {nextLessons[0].courseTitle} {nextLessons[0].level}</div>
           </div>
           <Icon.ArrowRight size={24} style={{ color: 'var(--color-accent)' }} />
