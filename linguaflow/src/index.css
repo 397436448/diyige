@@ -1,0 +1,144 @@
+/* ============================================
+   LinguaFlow Design System
+   Extracted from accepted concept images
+   ============================================ */
+
+:root {
+  /* Color tokens */
+  --color-bg: #faf8f5;
+  --color-surface: #ffffff;
+  --color-surface-alt: #fdfcf9;
+  --color-primary: #1e3a5f;
+  --color-primary-light: #2c4a7c;
+  --color-accent: #f5a623;
+  --color-accent-warm: #e8913a;
+  --color-accent-blue: #4a6cf7;
+  --color-success: #22c55e;
+  --color-text: #1a2b4a;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: #9ca3af;
+  --color-border: #e8e6e3;
+  --color-track: #e5e7eb;
+  --color-overlay: rgba(26, 43, 74, 0.04);
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', 'Times New Roman', Georgia, serif;
+  --font-mono: 'SF Mono', 'Fira Code', Consolas, monospace;
+
+  /* Type scale */
+  --text-micro: 10px;
+  --text-caption: 12px;
+  --text-body: 14px;
+  --text-section: 16px;
+  --data-medium: 18px;
+  --data-large: 24px;
+  --text-app-title: 22px;
+  --text-h1: 32px;
+  --text-h2: 24px;
+  --text-display: 44px;
+
+  /* Spacing scale (8px grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows - subtle, flat design */
+  --shadow-card: 0 2px 8px rgba(26, 43, 74, 0.05);
+  --shadow-elevated: 0 8px 32px rgba(26, 43, 74, 0.08);
+  --shadow-soft: 0 1px 3px rgba(26, 43, 74, 0.04);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 150ms var(--ease-out);
+  --transition: 250ms var(--ease-out);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+::selection {
+  background: rgba(245, 166, 35, 0.25);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
