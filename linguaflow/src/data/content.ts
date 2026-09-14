@@ -147,22 +147,22 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'a1-l5',
         title: 'At the Cafe',
-        description: 'Listening practice at a cafe',
+        description: '咖啡馆场景听力练习',
         type: 'listening',
         xp: 65,
         listening: [
           {
             transcript: 'Hello! What would you like to drink today? I would like a cup of coffee, please. Sure, anything else? No, that is all, thank you.',
             translation: '你好!今天想喝点什么?我想要一杯咖啡。好的,还要别的吗?不用了,谢谢。',
-            question: 'What does the customer order?',
-            options: ['Tea', 'Coffee', 'Water', 'Juice'],
+            question: '顾客点了什么?',
+            options: ['茶', '咖啡', '水', '果汁'],
             answer: 1,
           },
           {
             transcript: 'Excuse me, what time does the cafe close? We close at nine in the evening. Thank you, I will come back later.',
             translation: '打扰一下,咖啡馆几点关门?我们晚上九点关门。谢谢,我晚点再来。',
-            question: 'When does the cafe close?',
-            options: ['8 PM', '9 PM', '10 PM', '7 PM'],
+            question: '咖啡馆几点关门?',
+            options: ['晚上 8 点', '晚上 9 点', '晚上 10 点', '晚上 7 点'],
             answer: 1,
           },
         ],
@@ -180,7 +180,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'a2-l1',
         title: 'Travel & Transport',
-        description: 'Travel vocabulary and phrases',
+        description: '旅行相关的词汇与表达',
         type: 'vocabulary',
         xp: 60,
         words: [
@@ -195,7 +195,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'a2-l2',
         title: 'Past Tense Grammar',
-        description: 'Simple past tense exercises',
+        description: '一般过去时练习',
         type: 'grammar',
         xp: 70,
         grammar: [
@@ -203,32 +203,32 @@ export const COURSES: CourseLevel[] = [
             question: 'Past form of "go": Yesterday I ___ to school.',
             options: ['goed', 'went', 'gone', 'going'],
             answer: 1,
-            explanation: '"Go" is irregular: go → went → gone.',
+            explanation: '"Go" 是不规则动词:go → went → gone。',
           },
           {
             question: 'Past form of "eat": She ___ pizza for lunch.',
             options: ['eated', 'ate', 'eaten', 'eating'],
             answer: 1,
-            explanation: '"Eat" is irregular: eat → ate → eaten.',
+            explanation: '"Eat" 是不规则动词:eat → ate → eaten。',
           },
           {
             question: 'Choose the negative past: He ___ play football.',
             options: ["didn't played", "didn't play", "not played", "don't play"],
             answer: 1,
-            explanation: 'Negative past: did + not + base verb.',
+            explanation: '否定过去式:did + not + 动词原形。',
           },
           {
             question: 'Question form: ___ you see the film?',
             options: ['Did', 'Do', 'Was', 'Were'],
             answer: 0,
-            explanation: 'Past questions use "Did" + base verb.',
+            explanation: '过去时的疑问句使用 "Did" + 动词原形。',
           },
         ],
       },
       {
         id: 'a2-l3',
         title: 'Daily Routine Words',
-        description: 'Spell words about daily activities',
+        description: '拼写日常活动相关单词',
         type: 'spelling',
         xp: 60,
         words: [
@@ -241,7 +241,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'a2-l4',
         title: 'Directions Speaking',
-        description: 'Practice asking for and giving directions',
+        description: '练习问路与指路',
         type: 'speaking',
         xp: 60,
         speaking: [
@@ -254,15 +254,15 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'a2-l5',
         title: 'Phone Conversation',
-        description: 'Listen to a phone call',
+        description: '听一段电话对话',
         type: 'listening',
         xp: 70,
         listening: [
           {
             transcript: 'Hello, this is Lisa. Is John there? Sorry, he is not home right now. Can I take a message? Yes, please tell him to call me back. Sure, I will let him know.',
             translation: '你好,我是丽莎。约翰在吗?抱歉,他现在不在家。需要留言吗?是的,请告诉他回我电话。好的,我会转告他。',
-            question: 'Why does Lisa call?',
-            options: ['To invite John', 'To leave a message', 'To sell something', 'To complain'],
+            question: '丽莎为什么打电话?',
+            options: ['邀请约翰', '留言', '推销东西', '投诉'],
             answer: 1,
           },
         ],
@@ -280,7 +280,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'b1-l1',
         title: 'Work & Career',
-        description: 'Professional vocabulary',
+        description: '职场专业词汇',
         type: 'vocabulary',
         xp: 75,
         words: [
@@ -295,7 +295,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'b1-l2',
         title: 'Present Perfect',
-        description: 'Present perfect tense grammar',
+        description: '现在完成时语法',
         type: 'grammar',
         xp: 80,
         grammar: [
@@ -303,32 +303,32 @@ export const COURSES: CourseLevel[] = [
             question: 'Complete: I ___ never seen this film.',
             options: ['have', 'has', 'had', 'am'],
             answer: 0,
-            explanation: 'Present perfect: have/has + past participle.',
+            explanation: '现在完成时:have/has + 过去分词。',
           },
           {
             question: 'Choose: She ___ finished her homework.',
             options: ['have', 'has', 'had', 'is'],
             answer: 1,
-            explanation: 'Third person singular uses "has".',
+            explanation: '第三人称单数使用 "has"。',
           },
           {
             question: 'Negative: We ___ not visited Paris.',
             options: ['have', 'has', 'had', 'did'],
             answer: 0,
-            explanation: 'Negative: have/has + not + past participle.',
+            explanation: '否定形式:have/has + not + 过去分词。',
           },
           {
             question: 'Question: ___ you ever been to Japan?',
             options: ['Did', 'Have', 'Has', 'Were'],
             answer: 1,
-            explanation: 'Present perfect questions start with Have/Has.',
+            explanation: '现在完成时的疑问句以 Have/Has 开头。',
           },
         ],
       },
       {
         id: 'b1-l3',
         title: 'Technology Spelling',
-        description: 'Spell modern technology words',
+        description: '拼写现代科技相关单词',
         type: 'spelling',
         xp: 75,
         words: [
@@ -341,7 +341,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'b1-l4',
         title: 'Opinion Speaking',
-        description: 'Express opinions fluently',
+        description: '流利地表达观点',
         type: 'speaking',
         xp: 75,
         speaking: [
@@ -354,15 +354,15 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'b1-l5',
         title: 'News Report',
-        description: 'Listen to a news broadcast',
+        description: '听一段新闻播报',
         type: 'listening',
         xp: 85,
         listening: [
           {
             transcript: 'Good evening. In todays news, scientists have discovered a new species of butterfly in the Amazon rainforest. The discovery was made by a team of researchers from three different countries. They say this finding helps us understand biodiversity better.',
             translation: '晚上好。今天的新闻中,科学家在亚马逊雨林发现了一种新的蝴蝶物种。这一发现由来自三个不同国家的研究团队完成。他们说这一发现有助于我们更好地理解生物多样性。',
-            question: 'Where was the new species found?',
-            options: ['Africa', 'Amazon rainforest', 'Asia', 'Europe'],
+            question: '新物种是在哪里被发现的?',
+            options: ['非洲', '亚马逊雨林', '亚洲', '欧洲'],
             answer: 1,
           },
         ],
@@ -380,7 +380,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'b2-l1',
         title: 'Academic Vocabulary',
-        description: 'Advanced words for study and research',
+        description: '学习与研究的高级词汇',
         type: 'vocabulary',
         xp: 90,
         words: [
@@ -394,7 +394,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'b2-l2',
         title: 'Conditionals',
-        description: 'Zero, first, second, third conditionals',
+        description: '零条件、第一、第二、第三条件句',
         type: 'grammar',
         xp: 95,
         grammar: [
@@ -402,26 +402,26 @@ export const COURSES: CourseLevel[] = [
             question: 'Second conditional: If I ___ rich, I would travel.',
             options: ['am', 'was', 'were', 'be'],
             answer: 2,
-            explanation: 'Second conditional uses "were" for all subjects.',
+            explanation: '第二条件句中所有主语都用 "were"。',
           },
           {
             question: 'Third conditional: If she had studied, she ___ passed.',
             options: ['will have', 'would have', 'would', 'had'],
             answer: 1,
-            explanation: 'Third conditional: would have + past participle.',
+            explanation: '第三条件句:would have + 过去分词。',
           },
           {
             question: 'First conditional: If it rains, we ___ stay home.',
             options: ['will', 'would', 'had', 'have'],
             answer: 0,
-            explanation: 'First conditional: will + base verb.',
+            explanation: '第一条件句:will + 动词原形。',
           },
         ],
       },
       {
         id: 'b2-l3',
         title: 'Advanced Spelling',
-        description: 'Spell challenging words',
+        description: '拼写有挑战性的单词',
         type: 'spelling',
         xp: 90,
         words: [
@@ -434,7 +434,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'b2-l4',
         title: 'Debate Speaking',
-        description: 'Practice debate and argumentation',
+        description: '练习辩论与论证',
         type: 'speaking',
         xp: 90,
         speaking: [
@@ -447,15 +447,15 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'b2-l5',
         title: 'Lecture Listening',
-        description: 'Listen to an academic lecture',
+        description: '听一段学术讲座',
         type: 'listening',
         xp: 100,
         listening: [
           {
             transcript: 'Today we will explore how climate change affects migration patterns of birds. Research over the past decade shows that rising temperatures have shifted breeding grounds northward by an average of forty kilometers. This has serious consequences for ecosystem balance.',
             translation: '今天我们将探讨气候变化如何影响鸟类的迁徙模式。过去十年的研究表明,气温上升使繁殖地平均向北移动了40公里。这对生态系统的平衡产生了严重影响。',
-            question: 'How far have breeding grounds shifted?',
-            options: ['20 km', '40 km', '60 km', '100 km'],
+            question: '繁殖地移动了多远?',
+            options: ['20 公里', '40 公里', '60 公里', '100 公里'],
             answer: 1,
           },
         ],
@@ -473,7 +473,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'c1-l1',
         title: 'Nuanced Vocabulary',
-        description: 'Subtle and sophisticated words',
+        description: '微妙而精炼的词汇',
         type: 'vocabulary',
         xp: 110,
         words: [
@@ -487,7 +487,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'c1-l2',
         title: 'Subjunctive & Inversion',
-        description: 'Advanced grammatical structures',
+        description: '高级语法结构',
         type: 'grammar',
         xp: 115,
         grammar: [
@@ -495,26 +495,26 @@ export const COURSES: CourseLevel[] = [
             question: 'Subjunctive: I suggest that he ___ on time.',
             options: ['is', 'be', 'was', 'were'],
             answer: 1,
-            explanation: 'Subjunctive uses base form after suggest/demand.',
+            explanation: '虚拟语气在 suggest/demand 后使用动词原形。',
           },
           {
             question: 'Inversion: Never ___ such a thing.',
             options: ['I saw', 'have I seen', 'I have seen', 'did I saw'],
             answer: 1,
-            explanation: 'Negative adverb inversion: aux + subject + verb.',
+            explanation: '否定副词倒装:助动词 + 主语 + 动词。',
           },
           {
             question: 'Choose: Had I known, I ___ stayed.',
             options: ['will have', 'would have', 'would', 'had'],
             answer: 1,
-            explanation: 'Inverted third conditional.',
+            explanation: '倒装的第三条件句。',
           },
         ],
       },
       {
         id: 'c1-l3',
         title: 'Sophisticated Spelling',
-        description: 'Master tricky spellings',
+        description: '掌握易拼错的单词',
         type: 'spelling',
         xp: 110,
         words: [
@@ -527,7 +527,7 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'c1-l4',
         title: 'Rhetorical Speaking',
-        description: 'Masterful speech patterns',
+        description: '掌握高级演讲表达',
         type: 'speaking',
         xp: 110,
         speaking: [
@@ -540,15 +540,15 @@ export const COURSES: CourseLevel[] = [
       {
         id: 'c1-l5',
         title: 'Documentary Listening',
-        description: 'Listen to documentary narration',
+        description: '听一段纪录片解说',
         type: 'listening',
         xp: 120,
         listening: [
           {
             transcript: 'In the depths of the ocean, where sunlight cannot reach, extraordinary creatures have evolved to survive in complete darkness. These organisms, known as bioluminescent species, produce their own light through chemical reactions within their bodies, creating one of natures most mesmerizing spectacles.',
             translation: '在阳光无法到达的海洋深处,非凡的生物进化出了在完全黑暗中生存的能力。这些被称为生物发光物种的生物,通过体内的化学反应产生自己的光,创造了大自然最迷人的奇观之一。',
-            question: 'How do deep-sea creatures produce light?',
-            options: ['From the sun', 'Chemical reactions', 'From plants', 'From rocks'],
+            question: '深海生物如何发光?',
+            options: ['来自太阳', '化学反应', '来自植物', '来自岩石'],
             answer: 1,
           },
         ],
